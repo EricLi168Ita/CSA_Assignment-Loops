@@ -1,30 +1,29 @@
 public class AppleBag {
 
-    public static void main(String[] args) {}
-
-    /*
-     * Returns the weight of the next apple to be added to the bag, with 
-     * a different weight being returned with each call.
-     */
-    public static double getApple() {
-        int apple = (int)Math.floor(Math.random() * (20 - 5 + 1) + 5); // (max - min + 1) + min
-        double weight = (double)apple / 10.0;
-        return weight;
+    public static void main(String[] args) {
+        double targetWeight = 10.0;
+        double allowedVariation = 0.5;
+        int applesAdded = bagApples(targetWeight, allowedVariation);
+        System.out.println("Apples added: " + applesAdded);
     }
 
-    /* COMPLETE THIS METHOD
-     * Precondition: 0 < allowedVariation < targetWeight
-     * Write the method bagApples, which obtains the weights of apples to be 
-     * added to a bag using calls to 'getApple' and returns the number of apples 
-     * that are added to the bag until the combined weight exceeds targetWeight 
-     * minus allowedVariation.
-     * Example: If targetweight is 10.0 and allowedVariation is 0.5, the bagApples 
-     * method will return the number of apples that are added until the combined 
-     * weight exceeds 9.5
-     */
+    // Returns the weight of the next apple to be added to the bag
+    public static double getApple() {
+        int apple = (int) Math.floor(Math.random() * (20 - 5 + 1) + 5); // Random apple weight between 5 and 20 grams
+        return apple / 10.0; // Convert to weight between 0.5 and 2.0 kilograms
+    }
+
     public static int bagApples(double targetWeight, double allowedVariation) {
-        // Insert code here
-        
-        return 0;
+        double totalWeight = 0.0;
+        int numApples = 0;
+
+        // Keep adding apples until the total weight exceeds the target weight minus allowed variation
+        while (totalWeight <= (targetWeight - allowedVariation)) {
+            double appleWeight = getApple();
+            totalWeight += appleWeight;
+            numApples++;
+        }
+
+        return numApples;
     }
 }
