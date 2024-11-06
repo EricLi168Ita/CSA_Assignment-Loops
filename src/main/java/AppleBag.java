@@ -22,7 +22,7 @@ public class AppleBag {
             double appleWeight = getApple();
             totalWeight += appleWeight;
             numApples++;
-        }
+        }//
 
         return numApples;
     }
